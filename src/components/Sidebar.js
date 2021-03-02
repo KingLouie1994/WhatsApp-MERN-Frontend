@@ -1,9 +1,17 @@
+// Imports for styling
+import styled from "styled-components";
+
 const Sidebar = () => {
   return (
-    <div>
+    <StyledSidebar>
       <h1>Sidebar</h1>
-    </div>
+    </StyledSidebar>
   );
 };
+
+// Styled Components
+const StyledSidebar = styled.div`
+
+`;
 
 export default Sidebar;

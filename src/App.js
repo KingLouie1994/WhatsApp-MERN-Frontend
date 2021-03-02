@@ -1,5 +1,6 @@
 // Import of components
 import Sidebar from "./components/Sidebar";
+import Chat from "./components/Chat";
 
 // Imports for styling
 import GlobalStyle from "./GlobalStyle";
@@ -9,6 +10,7 @@ const App = () => {
     <div>
       <GlobalStyle />
       <Sidebar />
+      <Chat />
     </div>
   );
 };
