@@ -11,7 +11,9 @@ const Chat = () => {
 
 // Styled Components
 const StyledChat = styled.div`
-
+  display: flex;
+  flex-direction: column;
+  flex: 0.65;
 `;
 
 export default Chat;

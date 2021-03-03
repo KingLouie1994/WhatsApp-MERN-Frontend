@@ -11,7 +11,9 @@ const Sidebar = () => {
 
 // Styled Components
 const StyledSidebar = styled.div`
-
+    display: flex;
+    flex-direction: column;
+    flex: 0.35;
 `;
 
 export default Sidebar;
