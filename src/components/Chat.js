@@ -6,6 +6,8 @@ import ChatMessage from "./ChatMessage";
 import SearchIcon from "@material-ui/icons/Search";
 import AttachFileIcon from "@material-ui/icons/AttachFile";
 import MoreVertIcon from "@material-ui/icons/MoreVert";
+import InsertEmoticonIcon from "@material-ui/icons/InsertEmoticon";
+import MicIcon from "@material-ui/icons/Mic";
 
 // Imports for styling
 import styled from "styled-components";
@@ -34,6 +36,14 @@ const Chat = () => {
       <ChatBody>
         <ChatMessage />
       </ChatBody>
+      <ChatFooter>
+        <InsertEmoticonIcon />
+        <form>
+          <input type="text" placeholder="Type a message" />
+          <button type="submit">Send</button>
+        </form>
+        <MicIcon />
+      </ChatFooter>
     </StyledChat>
   );
 };
@@ -78,6 +88,33 @@ const ChatBody = styled.div`
   background-position: center;
   &::-webkit-scrollbar {
     width: 0;
+  }
+`;
+
+const ChatFooter = styled.div`
+  height: 62px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 10px 0 10px;
+  border-top: 1px solid lightgray;
+  form {
+    flex: 1;
+    display: flex;
+    input {
+      flex: 1;
+      border-radius: 30px;
+      margin: 10px;
+      padding: 10px;
+      border: none;
+      outline-width: 0;
+    }
+    button {
+      display: none;
+    }
+  }
+  .MuiSvgIcon-root {
+    color: grey;
   }
 `;
 
