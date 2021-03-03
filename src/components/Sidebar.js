@@ -95,6 +95,14 @@ const SidebarSearchContainer = styled.div`
   }
 `;
 
-const SidebarChats = styled.div``;
+const SidebarChats = styled.div`
+  flex: 1;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  background-color: white;
+  &::-webkit-scrollbar {
+    width: 0;
+  }
+`;
 
 export default Sidebar;
