@@ -1,15 +1,30 @@
+// Imports from react
+import React from "react";
+
 // Imports for styling
 import styled from "styled-components";
 
-const ChatMessage = () => {
+const ChatMessage = ({ name, message, timestamp, received }) => {
   return (
-    <ChatBodyMessage>
-      <ChatBodyMessageContainerName>Luis</ChatBodyMessageContainerName>
-      This is a message
-      <ChatBodyMessageContainerTimestamp>
-        {new Date().toUTCString()}
-      </ChatBodyMessageContainerTimestamp>
-    </ChatBodyMessage>
+    <React.Fragment>
+      {received ? (
+        <ChatBodyMessageReceived>
+          <ChatBodyMessageContainerName>{name}</ChatBodyMessageContainerName>
+          {message}
+          <ChatBodyMessageContainerTimestamp>
+            {timestamp}
+          </ChatBodyMessageContainerTimestamp>
+        </ChatBodyMessageReceived>
+      ) : (
+        <ChatBodyMessage>
+          <ChatBodyMessageContainerName>{name}</ChatBodyMessageContainerName>
+          {message}
+          <ChatBodyMessageContainerTimestamp>
+            {timestamp}
+          </ChatBodyMessageContainerTimestamp>
+        </ChatBodyMessage>
+      )}
+    </React.Fragment>
   );
 };
 

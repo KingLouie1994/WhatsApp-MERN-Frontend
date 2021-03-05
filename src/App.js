@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 // Import pusher for real time chat
 import Pusher from "pusher-js";
 
-// Import axios to fetch data
+// Import axios to handle data
 import axios from "axios";
 
 // Import of components
@@ -45,14 +45,12 @@ const App = () => {
     };
   }, [messages]);
 
-  console.log(messages);
-
   return (
     <StyledApp>
       <GlobalStyle />
       <Container>
         <Sidebar />
-        <Chat />
+        <Chat messages={messages} />
       </Container>
     </StyledApp>
   );
