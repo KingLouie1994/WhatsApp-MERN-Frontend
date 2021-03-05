@@ -1,3 +1,9 @@
+// Imports from react
+import { useState } from "react";
+
+// Import axios to handle data
+import axios from "axios";
+
 // Imports of components
 import { Avatar, IconButton } from "@material-ui/core";
 import ChatMessage from "./ChatMessage";
@@ -12,7 +18,26 @@ import MicIcon from "@material-ui/icons/Mic";
 // Imports for styling
 import styled from "styled-components";
 
-const Chat = () => {
+const Chat = ({ messages }) => {
+  const [input, setInput] = useState("");
+
+  const sendMessage = async (e) => {
+    e.preventDefault();
+    await axios
+      .post("http://localhost:8000/api/messages/new", {
+        name: "Luis Schekerka",
+        message: input,
+        timestamp: new Date().toUTCString(),
+      })
+      .then((response) => {
+        console.log(response.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+    setInput("");
+  };
+
   return (
     <StyledChat>
       <ChatHeader>
@@ -34,13 +59,30 @@ const Chat = () => {
         </ChatHeaderRight>
       </ChatHeader>
       <ChatBody>
-        <ChatMessage />
+        {messages.map((message) => {
+          return (
+            <ChatMessage
+              key={message._id}
+              name={message.name}
+              message={message.message}
+              received={message.received}
+              timestamp={message.timestamp}
+            />
+          );
+        })}
       </ChatBody>
       <ChatFooter>
         <InsertEmoticonIcon />
         <form>
-          <input type="text" placeholder="Type a message" />
-          <button type="submit">Send</button>
+          <input
+            value={input}
+            onChange={(e) => setInput(e.target.value)}
+            type="text"
+            placeholder="Type a message"
+          />
+          <button onClick={sendMessage} type="submit">
+            Send
+          </button>
         </form>
         <MicIcon />
       </ChatFooter>
